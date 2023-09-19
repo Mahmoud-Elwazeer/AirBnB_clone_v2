@@ -86,5 +86,6 @@ class FileStorage:
             my_dict = self.all()
             if key in my_dict.keys():
                 del my_dict[key]
+                self.save()
         
 
