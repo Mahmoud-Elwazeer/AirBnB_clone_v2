@@ -20,17 +20,25 @@ class FileStorage:
         """returns the dictionary objects or list of objects
         of one type of class if cls is not None
         """
-        if cls is None:
-            return self.__objects
-        objs = {}
+        # if cls is None:
+        #     return self.__objects
+        # objs = {}
+        # if cls is not None:
+        #     for key, val in self.__objects.items():
+        #         class_key = key.split(".")
+        #         if class_key[0] == cls.__name__:
+        #             objs[key] = val
+        # self.__objects = objs
+        # return self.__objects
+
         if cls is not None:
-            for key, val in self.__objects.items():
-                class_key = key.split(".")
-                if class_key[0] == cls.__name__:
-                    objs[key] = val
-        self.__objects = objs
+            for key, value in self.objects.items():
+                obj = {}
+                class_name, obj_id = key.split('.')
+                if class_name == cls.name:
+                    obj[key] = value
+            self.objects = obj
         return self.__objects
-        # print(objs)
 
     def new(self, obj):
         """sets in objects attribute the obj
@@ -69,14 +77,16 @@ class FileStorage:
     def delete(self, obj=None):
         """delete object from objects dictionary if it's not None
         """
-        if obj is not None:
+        if obj is None:
+            pass
+        else:
             # check if it is inside
             class_name = obj.__class__.__name__
             key = class_name + '.' + obj.id
 
             if key in self.__objects:
                 del self.__objects[key]
-        # self.save()
+        self.save()
 
 # objs = {}
 # if cls is not None:
