@@ -28,7 +28,8 @@ class FileStorage:
                 class_key = key.split(".")
                 if class_key[0] == cls.__name__:
                     objs[key] = val
-        return objs
+        self.__objects = objs
+        return self.__objects
         # print(objs)
 
     def new(self, obj):
@@ -75,7 +76,7 @@ class FileStorage:
 
             if key in self.__objects:
                 del self.__objects[key]
-        self.save()
+        # self.save()
 
 # objs = {}
 # if cls is not None:

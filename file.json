@@ -1,138 +1,4 @@
 {
-    "User.f137ee84-3497-44c9-8b75-313675355c6f": {
-        "id": "f137ee84-3497-44c9-8b75-313675355c6f",
-        "created_at": "2023-08-13T20:46:06.082422",
-        "updated_at": "2023-08-13T20:46:06.082450",
-        "x": "7",
-        "__class__": "User"
-    },
-    "Place.37789929-764d-47b5-b44f-f2813d2042a1": {
-        "id": "37789929-764d-47b5-b44f-f2813d2042a1",
-        "created_at": "2023-08-13T19:49:19.944925",
-        "updated_at": "2023-08-13T19:49:19.944943",
-        "x": "7",
-        "__class__": "Place"
-    },
-    "User.4d51057c-6775-455c-ae56-2af51024cf7f": {
-        "id": "4d51057c-6775-455c-ae56-2af51024cf7f",
-        "created_at": "2023-08-13T23:52:10.141070",
-        "updated_at": "2023-08-13T23:52:10.141102",
-        "__class__": "User"
-    },
-    "User.6fd63f17-f3cf-451e-8218-a89758dc777e": {
-        "id": "6fd63f17-f3cf-451e-8218-a89758dc777e",
-        "created_at": "2023-08-13T23:52:55.365605",
-        "updated_at": "2023-08-13T23:52:55.365633",
-        "c": 6.0,
-        "x": 9,
-        "__class__": "User"
-    },
-    "User.6a77b428-8922-4532-b4a4-c537d3e9c8af": {
-        "id": "6a77b428-8922-4532-b4a4-c537d3e9c8af",
-        "created_at": "2023-08-14T00:00:04.343039",
-        "updated_at": "2023-08-14T00:00:04.343069",
-        "c": 30,
-        "x": "\"\"",
-        "a": "\"0\"",
-        "__class__": "User"
-    },
-    "User.7ce763db-d68c-4f4d-b741-9df61ac81558": {
-        "id": "7ce763db-d68c-4f4d-b741-9df61ac81558",
-        "created_at": "2023-08-14T00:11:47.193653",
-        "updated_at": "2023-08-14T00:11:47.193691",
-        "x": 30,
-        "c": "\"cxm\"",
-        "__class__": "User"
-    },
-    "Place.28ccb36b-bdd7-4cc5-bcc0-cdc1b12cbfd4": {
-        "id": "28ccb36b-bdd7-4cc5-bcc0-cdc1b12cbfd4",
-        "created_at": "2023-09-19T15:54:22.341694",
-        "updated_at": "2023-09-19T15:54:22.341717",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "__class__": "Place"
-    },
-    "Place.e38f15bc-b73c-4c37-b442-d21bdc9ef671": {
-        "id": "e38f15bc-b73c-4c37-b442-d21bdc9ef671",
-        "created_at": "2023-09-19T16:00:55.024939",
-        "updated_at": "2023-09-19T16:00:55.025032",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": "4",
-        "__class__": "Place"
-    },
-    "Place.18118570-b0dc-4d56-a673-c9c5ccb18af1": {
-        "id": "18118570-b0dc-4d56-a673-c9c5ccb18af1",
-        "created_at": "2023-09-19T16:05:11.351300",
-        "updated_at": "2023-09-19T16:05:11.351490",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": "4",
-        "__class__": "Place"
-    },
-    "Place.21be0bb4-5bc9-471f-abcb-4cfcfde4a1fd": {
-        "id": "21be0bb4-5bc9-471f-abcb-4cfcfde4a1fd",
-        "created_at": "2023-09-19T16:06:05.377576",
-        "updated_at": "2023-09-19T16:06:05.377795",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": "4",
-        "__class__": "Place"
-    },
-    "Place.90089f77-066c-4970-8780-6e858c35436d": {
-        "id": "90089f77-066c-4970-8780-6e858c35436d",
-        "created_at": "2023-09-19T16:07:14.399786",
-        "updated_at": "2023-09-19T16:07:14.399830",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": "4",
-        "__class__": "Place"
-    },
-    "Place.3233e11b-813e-4b8f-9923-4aa4cff07aed": {
-        "id": "3233e11b-813e-4b8f-9923-4aa4cff07aed",
-        "created_at": "2023-09-19T16:08:27.463823",
-        "updated_at": "2023-09-19T16:08:27.465562",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": "4",
-        "__class__": "Place"
-    },
-    "Place.5a0447fc-42f2-411f-a53a-21d2a7dea0ab": {
-        "id": "5a0447fc-42f2-411f-a53a-21d2a7dea0ab",
-        "created_at": "2023-09-19T16:10:13.388378",
-        "updated_at": "2023-09-19T16:10:13.388484",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": 4,
-        "__class__": "Place"
-    },
-    "Place.e45fae11-ec06-4143-84b6-5f06388cc41d": {
-        "id": "e45fae11-ec06-4143-84b6-5f06388cc41d",
-        "created_at": "2023-09-19T16:11:00.909563",
-        "updated_at": "2023-09-19T16:11:00.909644",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My_little_house\"",
-        "number_rooms": 4,
-        "__class__": "Place"
-    },
-    "Place.98bec766-0e9f-4be6-82c6-0379bcb39034": {
-        "id": "98bec766-0e9f-4be6-82c6-0379bcb39034",
-        "created_at": "2023-09-19T16:11:10.786483",
-        "updated_at": "2023-09-19T16:11:10.786539",
-        "city_id": "\"0001\"",
-        "user_id": "\"0001\"",
-        "name": "\"My little house\"",
-        "number_rooms": 4,
-        "__class__": "Place"
-    },
     "State.9b619ba5-b238-4740-b18d-568c634ebbc3": {
         "id": "9b619ba5-b238-4740-b18d-568c634ebbc3",
         "created_at": "2023-09-19T22:56:11.867664",
@@ -291,6 +157,27 @@
         "id": "47784ece-ad27-41df-8b38-b4650ac6317d",
         "created_at": "2023-09-19T23:46:35.151611",
         "updated_at": "2023-09-19T23:46:35.151614",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.6e795c3e-9287-4e55-badc-9514b2e50e18": {
+        "id": "6e795c3e-9287-4e55-badc-9514b2e50e18",
+        "created_at": "2023-09-19T23:48:57.070232",
+        "updated_at": "2023-09-19T23:48:57.070239",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.c062f428-3e69-4f2d-833d-758c0a1fa0a5": {
+        "id": "c062f428-3e69-4f2d-833d-758c0a1fa0a5",
+        "created_at": "2023-09-19T23:50:09.046708",
+        "updated_at": "2023-09-19T23:50:09.046713",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.8cd7432d-f07e-43ee-91bd-7e31cf0f8678": {
+        "id": "8cd7432d-f07e-43ee-91bd-7e31cf0f8678",
+        "created_at": "2023-09-19T23:52:53.668703",
+        "updated_at": "2023-09-19T23:52:53.668707",
         "name": "California",
         "__class__": "State"
     }
