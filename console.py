@@ -47,6 +47,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             storage.reload()
             self.my_model = our_models[args[0]]()
+            print(self.my_model.id)
             for i in range(1, len(args)):
                 key, value = args[i].split("=")
                 setattr(self.my_model, key, value)
