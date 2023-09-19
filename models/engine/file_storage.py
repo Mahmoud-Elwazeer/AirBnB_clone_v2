@@ -17,17 +17,17 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """returns the dictionary objects
+        """returns the dictionary objects or list of objects
+        of one type of class if cls is not None
         """
+        objs = {}
         if cls is not None:
-            obj = {}
-            for key, value in self.__objects.items():
-                class_name, obj_id = key.split('.')
-                if class_name == cls:
-                    # obj = our_models[class_name](**value)
-                    # self.__objects[key] = obj
-                    obj[key] = value
-            return (obj)
+            for key, val in self.__objects.items():
+                class_key = key.split(".")
+                if class_key[0] == cls:
+                    objs[key] = val
+            # return objs
+            print(objs)
         return self.__objects
 
     def new(self, obj):
@@ -64,6 +64,17 @@ class FileStorage:
         except FileNotFoundError:
             pass
 
+    def delete(self, obj=None):
+        """delete object from objects dictionary if it's not None
+        """
+        if obj is not None:
+            # check if it is inside
+            class_name = obj.__class__.__name__
+            key = class_name + '.' + obj.id
+
+            if key in self.__objects:
+                del self.__objects[key]
+        self.save()
 
 # objs = {}
 # if cls is not None:

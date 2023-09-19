@@ -209,5 +209,26 @@
         "updated_at": "2023-09-19T23:20:02.026352",
         "name": "California",
         "__class__": "State"
+    },
+    "State.e01dfc1b-2019-4e3b-9755-6f501dbea068": {
+        "id": "e01dfc1b-2019-4e3b-9755-6f501dbea068",
+        "created_at": "2023-09-19T23:25:47.283197",
+        "updated_at": "2023-09-19T23:25:47.283200",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.fb190dd8-9731-4f00-b1cb-0122bf064da0": {
+        "id": "fb190dd8-9731-4f00-b1cb-0122bf064da0",
+        "created_at": "2023-09-19T23:26:59.224172",
+        "updated_at": "2023-09-19T23:26:59.224174",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.673b02ae-a44d-4017-ac45-968cf75a5af9": {
+        "id": "673b02ae-a44d-4017-ac45-968cf75a5af9",
+        "created_at": "2023-09-19T23:29:08.780875",
+        "updated_at": "2023-09-19T23:29:08.780878",
+        "name": "California",
+        "__class__": "State"
     }
 }
