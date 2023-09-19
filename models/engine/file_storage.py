@@ -79,14 +79,14 @@ class FileStorage:
         """
         if obj is None:
             pass
-        else:
-            # check if it is inside
-            class_name = obj.__class__.__name__
-            key = class_name + '.' + obj.id
+        # else:
+        #     # check if it is inside
+        #     class_name = obj.__class__.__name__
+        #     key = class_name + '.' + obj.id
 
-            if key in self.__objects:
-                del self.__objects[key]
-        self.save()
+        #     if key in self.__objects:
+        #         del self.__objects[key]
+        # self.save()
 
 # objs = {}
 # if cls is not None:
