@@ -52,5 +52,85 @@
         "user_id": "\"0001\"",
         "name": "\"My_little_house\"",
         "__class__": "Place"
+    },
+    "Place.e38f15bc-b73c-4c37-b442-d21bdc9ef671": {
+        "id": "e38f15bc-b73c-4c37-b442-d21bdc9ef671",
+        "created_at": "2023-09-19T16:00:55.024939",
+        "updated_at": "2023-09-19T16:00:55.025032",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": "4",
+        "__class__": "Place"
+    },
+    "Place.18118570-b0dc-4d56-a673-c9c5ccb18af1": {
+        "id": "18118570-b0dc-4d56-a673-c9c5ccb18af1",
+        "created_at": "2023-09-19T16:05:11.351300",
+        "updated_at": "2023-09-19T16:05:11.351490",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": "4",
+        "__class__": "Place"
+    },
+    "Place.21be0bb4-5bc9-471f-abcb-4cfcfde4a1fd": {
+        "id": "21be0bb4-5bc9-471f-abcb-4cfcfde4a1fd",
+        "created_at": "2023-09-19T16:06:05.377576",
+        "updated_at": "2023-09-19T16:06:05.377795",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": "4",
+        "__class__": "Place"
+    },
+    "Place.90089f77-066c-4970-8780-6e858c35436d": {
+        "id": "90089f77-066c-4970-8780-6e858c35436d",
+        "created_at": "2023-09-19T16:07:14.399786",
+        "updated_at": "2023-09-19T16:07:14.399830",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": "4",
+        "__class__": "Place"
+    },
+    "Place.3233e11b-813e-4b8f-9923-4aa4cff07aed": {
+        "id": "3233e11b-813e-4b8f-9923-4aa4cff07aed",
+        "created_at": "2023-09-19T16:08:27.463823",
+        "updated_at": "2023-09-19T16:08:27.465562",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": "4",
+        "__class__": "Place"
+    },
+    "Place.5a0447fc-42f2-411f-a53a-21d2a7dea0ab": {
+        "id": "5a0447fc-42f2-411f-a53a-21d2a7dea0ab",
+        "created_at": "2023-09-19T16:10:13.388378",
+        "updated_at": "2023-09-19T16:10:13.388484",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": 4,
+        "__class__": "Place"
+    },
+    "Place.e45fae11-ec06-4143-84b6-5f06388cc41d": {
+        "id": "e45fae11-ec06-4143-84b6-5f06388cc41d",
+        "created_at": "2023-09-19T16:11:00.909563",
+        "updated_at": "2023-09-19T16:11:00.909644",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "number_rooms": 4,
+        "__class__": "Place"
+    },
+    "Place.98bec766-0e9f-4be6-82c6-0379bcb39034": {
+        "id": "98bec766-0e9f-4be6-82c6-0379bcb39034",
+        "created_at": "2023-09-19T16:11:10.786483",
+        "updated_at": "2023-09-19T16:11:10.786539",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My little house\"",
+        "number_rooms": 4,
+        "__class__": "Place"
     }
 }
