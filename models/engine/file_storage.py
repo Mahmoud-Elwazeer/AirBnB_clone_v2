@@ -32,12 +32,12 @@ class FileStorage:
         # return self.__objects
 
         if cls is not None:
-            for key, value in self.objects.items():
+            for key, value in self.__objects.items():
                 obj = {}
                 class_name, obj_id = key.split('.')
                 if class_name == cls.__name__:
                     obj[key] = value
-            self.objects = obj
+            self.__objects = obj
         return self.__objects
 
     def new(self, obj):
@@ -77,9 +77,7 @@ class FileStorage:
     def delete(self, obj=None):
         """delete object from objects dictionary if it's not None
         """
-        if obj is None:
-            pass
-        else:
+        if obj is not None:
             # check if it is inside
             class_name = obj.__class__.__name__
             key = class_name + '.' + obj.id
