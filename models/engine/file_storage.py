@@ -20,17 +20,6 @@ class FileStorage:
         """returns the dictionary objects or list of objects
         of one type of class if cls is not None
         """
-        # if cls is None:
-        #     return self.__objects
-        # objs = {}
-        # if cls is not None:
-        #     for key, val in self.__objects.items():
-        #         class_key = key.split(".")
-        #         if class_key[0] == cls.__name__:
-        #             objs[key] = val
-        # self.__objects = objs
-        # return self.__objects
-
         if cls is not None:
             for key, value in self.__objects.items():
                 obj = {}
@@ -83,4 +72,3 @@ class FileStorage:
             key = obj.__class__.__name__ + '.' + obj.id
             if key in self.__objects.keys():
                 del self.__objects[key]
-
