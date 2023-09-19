@@ -83,7 +83,7 @@ class FileStorage:
             key = obj.__class__.__name__ + '.' + obj.id
             if key in self.__objects.keys():
                 del self.__objects[key]
-            # self.save()
+                self.save()
         # if obj is not None:
         #     # check if it is inside
         #     class_name = obj.__class__.__name__
