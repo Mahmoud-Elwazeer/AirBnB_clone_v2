@@ -132,5 +132,82 @@
         "name": "\"My little house\"",
         "number_rooms": 4,
         "__class__": "Place"
+    },
+    "State.9b619ba5-b238-4740-b18d-568c634ebbc3": {
+        "id": "9b619ba5-b238-4740-b18d-568c634ebbc3",
+        "created_at": "2023-09-19T22:56:11.867664",
+        "updated_at": "2023-09-19T22:56:11.867669",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.fd28750b-f442-4e8d-b981-1609e5642642": {
+        "id": "fd28750b-f442-4e8d-b981-1609e5642642",
+        "created_at": "2023-09-19T23:01:44.883088",
+        "updated_at": "2023-09-19T23:01:44.883091",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.c96a33de-e9b0-44c1-9ef6-82fd7c8c3b20": {
+        "id": "c96a33de-e9b0-44c1-9ef6-82fd7c8c3b20",
+        "created_at": "2023-09-19T23:04:17.851940",
+        "updated_at": "2023-09-19T23:04:17.851943",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.1f68fa6a-3274-4c4d-8ff6-c748e935fb56": {
+        "id": "1f68fa6a-3274-4c4d-8ff6-c748e935fb56",
+        "created_at": "2023-09-19T23:04:30.865148",
+        "updated_at": "2023-09-19T23:04:30.865150",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.2aeaf759-829e-4565-85cd-3a15d248513c": {
+        "id": "2aeaf759-829e-4565-85cd-3a15d248513c",
+        "created_at": "2023-09-19T23:04:40.762494",
+        "updated_at": "2023-09-19T23:04:40.762504",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.d2b76a2c-3a4a-43db-9cbb-54c8af034484": {
+        "id": "d2b76a2c-3a4a-43db-9cbb-54c8af034484",
+        "created_at": "2023-09-19T23:04:47.824854",
+        "updated_at": "2023-09-19T23:04:47.824860",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.fd5e02bb-16c6-4ec5-a75e-4dd8b320f52e": {
+        "id": "fd5e02bb-16c6-4ec5-a75e-4dd8b320f52e",
+        "created_at": "2023-09-19T23:10:08.557879",
+        "updated_at": "2023-09-19T23:10:08.557882",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.beb2e019-6c79-4720-9b81-b481ee468e8d": {
+        "id": "beb2e019-6c79-4720-9b81-b481ee468e8d",
+        "created_at": "2023-09-19T23:16:46.275762",
+        "updated_at": "2023-09-19T23:16:46.275763",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.4f90fe68-da86-4bba-9a42-bd9617bc4958": {
+        "id": "4f90fe68-da86-4bba-9a42-bd9617bc4958",
+        "created_at": "2023-09-19T23:17:30.987688",
+        "updated_at": "2023-09-19T23:17:30.987690",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.abc973b2-b7e5-42fc-b521-d3853fcd847f": {
+        "id": "abc973b2-b7e5-42fc-b521-d3853fcd847f",
+        "created_at": "2023-09-19T23:19:37.201840",
+        "updated_at": "2023-09-19T23:19:37.201842",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.46bba486-2d52-4768-bd87-eefa3ef73047": {
+        "id": "46bba486-2d52-4768-bd87-eefa3ef73047",
+        "created_at": "2023-09-19T23:20:02.026346",
+        "updated_at": "2023-09-19T23:20:02.026352",
+        "name": "California",
+        "__class__": "State"
     }
 }

@@ -16,9 +16,18 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self):
+    def all(self, cls=None):
         """returns the dictionary objects
         """
+        if cls is not None:
+            obj = {}
+            for key, value in self.__objects.items():
+                class_name, obj_id = key.split('.')
+                if class_name == cls:
+                    # obj = our_models[class_name](**value)
+                    # self.__objects[key] = obj
+                    obj[key] = value
+            return (obj)
         return self.__objects
 
     def new(self, obj):
@@ -54,3 +63,14 @@ class FileStorage:
                     # self.__objects[key] = BaseModel(**value)
         except FileNotFoundError:
             pass
+
+
+# objs = {}
+# if cls is not None:
+#     for key, val in self.objects.items():
+#         class_key = key.split(".")
+#         if class_key[0] == cls:
+#             objs[key].append(val)
+#     return objs
+
+# return self.objects
