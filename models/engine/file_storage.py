@@ -79,6 +79,7 @@ class FileStorage:
         """
         if obj is None:
             pass
+
         # else:
         #     # check if it is inside
         #     class_name = obj.__class__.__name__
