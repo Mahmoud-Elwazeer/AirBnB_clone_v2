@@ -50,8 +50,6 @@ class HBNBCommand(cmd.Cmd):
             print(self.my_model.id)
             for i in range(1, len(args)):
                 key, value = args[i].split("=")
-                # if "_" in value:
-                #     value.replace('_', ' ')
                 try:
                     value = int(value)
                 except ValueError:
