@@ -35,7 +35,7 @@ class FileStorage:
             for key, value in self.objects.items():
                 obj = {}
                 class_name, obj_id = key.split('.')
-                if class_name == cls.name:
+                if class_name == cls.__name__:
                     obj[key] = value
             self.objects = obj
         return self.__objects
