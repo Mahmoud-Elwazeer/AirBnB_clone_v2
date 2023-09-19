@@ -39,13 +39,16 @@ class HBNBCommand(cmd.Cmd):
         """creates new instace as save it to json file
         Usage: create <className>
         """
+        args = line.split()
         if not line:
             print("** class name missing **")
-        elif line not in our_models.keys():
+        elif args[0] not in our_models.keys():
             print("** class doesn't exist **")
         else:
+            key, value = args[1].split("=")
             storage.reload()
-            self.my_model = our_models[line]()
+            self.my_model = our_models[args[0]]()
+            setattr(self.my_model, key, value)
             self.my_model.save()
             print(self.my_model.id)
 
