@@ -81,16 +81,10 @@ class FileStorage:
             pass
         else:
             key = obj.__class__.__name__ + '.' + obj.id
-            if key in self.__objects.keys():
-                del self.__objects[key]
-                self.save()
-        # if obj is not None:
-        #     # check if it is inside
-        #     class_name = obj.__class__.__name__
-        #     key = class_name + '.' + obj.id
-
-        #     if key in self.__objects:
-        #         del self.__objects[key]
-        #         self.save()
+            # if key in self.__objects.keys():
+            #     del self.__objects[key]
+            my_dict = self.all()
+            if my_key in my_dict.keys():
+                del my_dict[my_key]
         
 
