@@ -230,5 +230,61 @@
         "updated_at": "2023-09-19T23:29:08.780878",
         "name": "California",
         "__class__": "State"
+    },
+    "State.5f39b045-957a-445d-b8c3-e6116af7c77c": {
+        "id": "5f39b045-957a-445d-b8c3-e6116af7c77c",
+        "created_at": "2023-09-19T23:33:33.948339",
+        "updated_at": "2023-09-19T23:33:33.948342",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.d221b763-d869-4237-94fa-725963650a79": {
+        "id": "d221b763-d869-4237-94fa-725963650a79",
+        "created_at": "2023-09-19T23:33:59.359816",
+        "updated_at": "2023-09-19T23:33:59.359819",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.9e55c5a4-5673-4034-a189-5716101dba56": {
+        "id": "9e55c5a4-5673-4034-a189-5716101dba56",
+        "created_at": "2023-09-19T23:36:35.398698",
+        "updated_at": "2023-09-19T23:36:35.398701",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.4b398124-bb6d-4fa7-9171-77a88be36f2f": {
+        "id": "4b398124-bb6d-4fa7-9171-77a88be36f2f",
+        "created_at": "2023-09-19T23:36:47.363514",
+        "updated_at": "2023-09-19T23:36:47.363516",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.5a2ce13c-8ad7-4707-a9d5-04870d9f5a07": {
+        "id": "5a2ce13c-8ad7-4707-a9d5-04870d9f5a07",
+        "created_at": "2023-09-19T23:37:44.868020",
+        "updated_at": "2023-09-19T23:37:44.868023",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.c40474ae-ab35-424e-8574-5c059c8dfa32": {
+        "id": "c40474ae-ab35-424e-8574-5c059c8dfa32",
+        "created_at": "2023-09-19T23:40:00.787405",
+        "updated_at": "2023-09-19T23:40:00.787408",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.4fa1f5cd-f9d4-45ca-acd5-4bbd7c5315c0": {
+        "id": "4fa1f5cd-f9d4-45ca-acd5-4bbd7c5315c0",
+        "created_at": "2023-09-19T23:44:15.542134",
+        "updated_at": "2023-09-19T23:44:15.542138",
+        "name": "California",
+        "__class__": "State"
+    },
+    "State.a82ff128-db4c-464a-b6e3-bca71504d3c6": {
+        "id": "a82ff128-db4c-464a-b6e3-bca71504d3c6",
+        "created_at": "2023-09-19T23:45:29.115462",
+        "updated_at": "2023-09-19T23:45:29.115465",
+        "name": "California",
+        "__class__": "State"
     }
 }
