@@ -180,5 +180,12 @@
         "updated_at": "2023-09-19T23:52:53.668707",
         "name": "California",
         "__class__": "State"
+    },
+    "State.9ac4f2f6-0c16-434e-bf9f-64d0f6d1f73f": {
+        "id": "9ac4f2f6-0c16-434e-bf9f-64d0f6d1f73f",
+        "created_at": "2023-09-19T23:54:56.982591",
+        "updated_at": "2023-09-19T23:54:56.982599",
+        "name": "California",
+        "__class__": "State"
     }
 }
