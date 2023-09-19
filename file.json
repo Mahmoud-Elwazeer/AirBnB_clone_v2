@@ -43,5 +43,14 @@
         "x": 30,
         "c": "\"cxm\"",
         "__class__": "User"
+    },
+    "Place.28ccb36b-bdd7-4cc5-bcc0-cdc1b12cbfd4": {
+        "id": "28ccb36b-bdd7-4cc5-bcc0-cdc1b12cbfd4",
+        "created_at": "2023-09-19T15:54:22.341694",
+        "updated_at": "2023-09-19T15:54:22.341717",
+        "city_id": "\"0001\"",
+        "user_id": "\"0001\"",
+        "name": "\"My_little_house\"",
+        "__class__": "Place"
     }
 }

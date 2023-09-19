@@ -45,12 +45,12 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in our_models.keys():
             print("** class doesn't exist **")
         else:
-            key, value = args[1].split("=")
             storage.reload()
             self.my_model = our_models[args[0]]()
-            setattr(self.my_model, key, value)
+            for i in range(1, len(args)):
+                key, value = args[i].split("=")
+                setattr(self.my_model, key, value)
             self.my_model.save()
-            print(self.my_model.id)
 
     def do_show(self, line):
         """ Prints the string representation of an instance
