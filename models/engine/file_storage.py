@@ -84,7 +84,7 @@ class FileStorage:
 
             if key in self.__objects:
                 del self.__objects[key]
-        self.save()
+                self.save()
 
 # objs = {}
 # if cls is not None:
