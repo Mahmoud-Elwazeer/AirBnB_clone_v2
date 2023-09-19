@@ -84,7 +84,7 @@ class FileStorage:
             # if key in self.__objects.keys():
             #     del self.__objects[key]
             my_dict = self.all()
-            if my_key in my_dict.keys():
-                del my_dict[my_key]
+            if key in my_dict.keys():
+                del my_dict[key]
         
 
