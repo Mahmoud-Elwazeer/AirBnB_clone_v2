@@ -69,6 +69,8 @@ class BaseModel:
         self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         self.__dict__["__class__"] = class_name
+        if "_sa_instance_state" in self.__dict__.keys():
+            del self.__dict__["_sa_instance_state"]
         return self.__dict__
 
     def delete(self):
