@@ -68,7 +68,7 @@ class DBStorage:
                 # obj = self.__session.query(i).all()
                 # objects.append(obj)
         else:
-            objects = self.__session.query("State").all()
+            objects = self.__session.query(cls).all()
         return {f"{obj.__class__.__name__}.{obj.id}": obj for obj in objects}
 
     def new(self, obj):
