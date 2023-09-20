@@ -26,33 +26,40 @@ class DBStorage:
             "mysql+mysqldb://{}:{}@{}/{}".
             format(self.user, self.passwd, self.host, self.db),
             pool_pre_ping=True)
+        
+        if os.getenv('HBNB_ENV') == 'test':
+            Base.metadata.drop_all(self.__engine)
 
-        Session = sessionmaker(bind=self.__engine)
-        self.__session = Session()
-        metadata = MetaData(bind=self.__engine)
+        # Create the current database session with expire_on_commit=False
+        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(session_factory)
 
-        if os.getenv("HBNB_ENV") == "test":
-            metadata.drop_all()
-            self.__session.commit()
+        # Session = sessionmaker(bind=self.__engine)
+        # self.__session = Session()
+        # metadata = MetaData(bind=self.__engine)
+
+        # if os.getenv("HBNB_ENV") == "test":
+        #     metadata.drop_all()
+        #     self.__session.commit()
 
     def all(self, cls=None):
         """query on the current database session (self.__session)
             all objects depending of the class name """
-        obj = self.__session.query().all()
-        if cls is None:
-            # query all objects
-            self.objs = self.__session.query(
-                our_models["User"],
-                our_models["City"],
-                our_models["State"],
-                our_models["Place"],
-                our_models["Review"],
-                our_models["Amenity"]
-            ).all()
-        else:
-            self.objs = self.session.query(cls).all()
-
-        return (self.objs)
+        # if cls is None:
+        #     # query all objects
+        #     self.objs = self.__session.query(
+        #         our_models["City"]
+        #         # our_models["City"],
+        #         # our_models["State"],
+        #         # our_models["Place"],
+        #         # our_models["Review"],
+        #         # our_models["Amenity"]
+        #     ).all()
+        # else:
+        objects = self.__session.query("State").all()
+        print(1)
+        print(objects)
+        return {f"{obj.__class__.__name__}.{obj.id}": obj for obj in objects}
 
     def new(self, obj):
         """add the object to the current database session"""
