@@ -5,6 +5,7 @@ from models.base_model import BaseModel, Base
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from sqlalchemy.orm import relationship
+from models.review import Review
 
 
 class Place(BaseModel, Base):
@@ -46,16 +47,16 @@ class Place(BaseModel, Base):
         super().__init__(*args, **kwargs)
 
     @property
-    def cities(self):
+    def reviews(self):
         """
-        Getter attribute that returns a list of City instances
-        with state_id equal to the current State.id
+        Getter attribute that returns the list of Review instances 
+        with place_id equals to the current Place.id
         """
 
         from models import storage
         lst = []
 
-        for city in storage.all(City).values():
-            if self.id == city.state_id:
-                lst.append(city)
+        for review in storage.all(Review).values():
+            if self.id == Review.state_id:
+                lst.append(review)
         return lst
