@@ -47,17 +47,6 @@ class DBStorage:
     def all(self, cls=None):
         """query on the current database session (self.__session)
             all objects depending of the class name """
-        # if cls is None:
-        #     # query all objects
-        #     self.objs = self.__session.query(
-        #         our_models["City"]
-        #         # our_models["City"],
-        #         # our_models["State"],
-        #         # our_models["Place"],
-        #         # our_models["Review"],
-        #         # our_models["Amenity"]
-        #     ).all()
-        # else:
         if cls is None:
             objects = []
             out_dict = {}
