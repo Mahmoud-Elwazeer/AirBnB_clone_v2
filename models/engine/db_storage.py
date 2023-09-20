@@ -60,16 +60,20 @@ class DBStorage:
         # else:
         if cls is None:
             objects = []
+            out_dict = {}
             for i in our_models.values():
                 if (i == BaseModel):
                     continue
-                # print(i)
                 objects.extend(self.__session.query(i).all())
                 # obj = self.__session.query(i).all()
                 # objects.append(obj)
         else:
             objects = self.__session.query(cls).all()
-        return {f"{obj.__class__.__name__}.{obj.id}": obj for obj in objects}
+
+        for obj in objects:
+            key = obj.__class__.__name__ + '.' + obj.id
+            out_dict[key] = obj
+        return out_dict
 
     def new(self, obj):
         """add the object to the current database session"""
