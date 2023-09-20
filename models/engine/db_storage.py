@@ -8,6 +8,7 @@ import os
 from models.all_models import our_models
 from models.base_model import BaseModel, Base
 
+
 class DBStorage:
     """database storage
     """
@@ -26,12 +27,13 @@ class DBStorage:
             "mysql+mysqldb://{}:{}@{}/{}".
             format(self.user, self.passwd, self.host, self.db),
             pool_pre_ping=True)
-        
+
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
         # Create the current database session with expire_on_commit=False
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session_factory)
 
         # Session = sessionmaker(bind=self.__engine)
