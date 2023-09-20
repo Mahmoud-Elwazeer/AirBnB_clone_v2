@@ -61,8 +61,11 @@ class DBStorage:
         if cls is None:
             objects = []
             for i in our_models.values():
-                # obj = self.__session.query(i),all()
-                objects.extend(self.__session.query(i),all())
+                if (i == BaseModel):
+                    continue
+                # print(i)
+                objects.extend(self.__session.query(i).all())
+                # obj = self.__session.query(i).all()
                 # objects.append(obj)
         else:
             objects = self.__session.query("State").all()
