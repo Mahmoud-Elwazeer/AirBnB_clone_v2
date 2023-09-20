@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 import os
 from models.all_models import our_models
+import MySQLdb
 
 Base = declarative_base()
 
@@ -25,7 +26,7 @@ class DBStorage:
         self.db = os.getenv("HBNB_MYSQL_DB")
 
         self.__engine = create_engine(
-            "mysql://{}:{}@{}/{}".
+            "mysql+mysqldb://{}:{}@{}/{}".
             format(self.user, self.passwd, self.host, self.db),
             pool_pre_ping=True)
 
