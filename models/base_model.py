@@ -3,6 +3,10 @@
 import uuid
 from datetime import datetime
 import models
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, DateTime
+
+Base = declarative_base()
 
 
 class BaseModel:
@@ -17,13 +21,18 @@ class BaseModel:
             args: is a Tuple that contains all arguments (unused)
             kwargs:  is a dictionary that contains all arguments by key/value
         """
+        id = Column(String(60), unique=True, primary_key=True, nullable=False)
+        created_at = Column(DateTime, nullable=False,
+                            default=datetime.utcnow())
+        updated_at = Column(DateTime, nullable=False,
+                            default=datetime.utcnow())
+
         dt_format = "%Y-%m-%dT%H:%M:%S.%f"
         # if len(kwargs) == 0:
         if not kwargs:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -49,6 +58,7 @@ class BaseModel:
         with the current datetime
         """
         self.updated_at = datetime.now()
+        models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
@@ -60,3 +70,8 @@ class BaseModel:
         self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         self.__dict__["__class__"] = class_name
         return self.__dict__
+
+    def delete(self):
+        """delete the current instance from the storage
+        """
+        models.storage.delete(self)
