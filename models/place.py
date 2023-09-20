@@ -13,10 +13,10 @@ class Place(BaseModel, Base):
     __tablename__ = "places"
 
     city_id = Column(String(60), ForeignKey(
-        "cities.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
+        "cities.id"), nullable=False)
     user_id = Column(String(60), ForeignKey(
-        "users.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
-    name = Column(String(String(120)), nullable=False)
+        "users.id"), nullable=False)
+    name = Column(String(120), nullable=False)
     description = Column(String(1024), nullable=False)
     number_rooms = Column(Integer, nullable=False, default=0)
     number_bathrooms = Column(Integer, nullable=False, default=0)
@@ -25,7 +25,7 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
 
-    reviews = relationship("Review", backref="place", cascade="all, delete")
+    reviews = relationship("Review", backref="place", cascade="all, delete, save-update")
 
     # cites = relationship("City", back_populates="places")
 
