@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""New engine for database
+"""
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 import os
@@ -6,10 +8,14 @@ from models.all_models import our_models
 
 
 class DBStorage:
+    """database storage
+    """
     __engine = None
     __session = None
 
     def __init__(self):
+        """init special method
+        """
         self.user = os.getenv("HBNB_MYSQL_USER")
         self.passwd = os.getenv("HBNB_MYSQL_PWD")
         self.host = os.getenv("HBNB_MYSQL_HOST")
