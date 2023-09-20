@@ -50,7 +50,6 @@ class Place(BaseModel, Base):
             Getter attribute that returns the list of Review instances 
             with place_id equals to the current Place.id
             """
-
             from models import storage
             lst = []
 
