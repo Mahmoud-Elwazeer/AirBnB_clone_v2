@@ -14,6 +14,12 @@ class BaseModel:
     for other classes
     """
 
+    id = Column(String(60), unique=True, primary_key=True, nullable=False)
+    created_at = Column(DateTime, nullable=False,
+                        default=datetime.utcnow())
+    updated_at = Column(DateTime, nullable=False,
+                        default=datetime.utcnow())
+
     def __init__(self, *args, **kwargs):
         """init magic method
 
@@ -21,11 +27,6 @@ class BaseModel:
             args: is a Tuple that contains all arguments (unused)
             kwargs:  is a dictionary that contains all arguments by key/value
         """
-        id = Column(String(60), unique=True, primary_key=True, nullable=False)
-        created_at = Column(DateTime, nullable=False,
-                            default=datetime.utcnow())
-        updated_at = Column(DateTime, nullable=False,
-                            default=datetime.utcnow())
 
         dt_format = "%Y-%m-%dT%H:%M:%S.%f"
         # if len(kwargs) == 0:
@@ -69,6 +70,7 @@ class BaseModel:
         self.created_at = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         self.updated_at = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         self.__dict__["__class__"] = class_name
+
         if "_sa_instance_state" in self.__dict__.keys():
             del self.__dict__["_sa_instance_state"]
         return self.__dict__
