@@ -32,9 +32,9 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
         # Create the current database session with expire_on_commit=False
-        # session_factory = sessionmaker(
-        #     bind=self.__engine, expire_on_commit=False)
-        # self.__session = scoped_session(session_factory)
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(session_factory)
 
         # Session = sessionmaker(bind=self.__engine)
         # self.__session = Session()
