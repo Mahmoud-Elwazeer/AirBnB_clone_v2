@@ -2,10 +2,12 @@
 """New engine for database
 """
 from sqlalchemy import create_engine, MetaData
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy.ext.declarative import declarative_base
 import os
 from models.all_models import our_models
 
+Base = declarative_base()
 
 class DBStorage:
     """database storage
@@ -68,4 +70,9 @@ class DBStorage:
             self.__session.delete(obj)
 
     def reload(self):
-        pass
+        """create all tables in the database"""
+        Base.metadata.create_all(self.__engine)
+
+        # Create a session with the specified options
+        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        self.__session = scoped_session(session_factory)
