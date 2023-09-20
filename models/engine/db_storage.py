@@ -18,23 +18,23 @@ class DBStorage:
     def __init__(self):
         """init special method
         """
-        self.user = os.getenv("HBNB_MYSQL_USER")
-        self.passwd = os.getenv("HBNB_MYSQL_PWD")
-        self.host = os.getenv("HBNB_MYSQL_HOST")
-        self.db = os.getenv("HBNB_MYSQL_DB")
+        user = os.getenv("HBNB_MYSQL_USER")
+        passwd = os.getenv("HBNB_MYSQL_PWD")
+        host = os.getenv("HBNB_MYSQL_HOST")
+        db = os.getenv("HBNB_MYSQL_DB")
 
         self.__engine = create_engine(
             "mysql+mysqldb://{}:{}@{}/{}".
-            format(self.user, self.passwd, self.host, self.db),
+            format(user, passwd, host, db),
             pool_pre_ping=True)
 
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
         # Create the current database session with expire_on_commit=False
-        session_factory = sessionmaker(
-            bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(session_factory)
+        # session_factory = sessionmaker(
+        #     bind=self.__engine, expire_on_commit=False)
+        # self.__session = scoped_session(session_factory)
 
         # Session = sessionmaker(bind=self.__engine)
         # self.__session = Session()
