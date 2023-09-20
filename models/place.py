@@ -57,10 +57,10 @@ class Place(BaseModel, Base):
                     lst.append(review)
             return lst
 
-    if os.getenv("HBNB_TYPE_STORAGE") != "db":
-        @property
-        def amenities(self):
-            """returns the list of Amenity instances based on 
-            the attribute amenity_ids
-            """
-            lst = []
+    # if os.getenv("HBNB_TYPE_STORAGE") != "db":
+    #     @property
+    #     def amenities(self):
+    #         """returns the list of Amenity instances based on
+    #         the attribute amenity_ids
+    #         """
+    #         lst = []
