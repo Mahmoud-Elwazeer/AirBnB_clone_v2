@@ -33,3 +33,39 @@ class DBStorage:
         if os.getenv("HBNB_ENV") == "test":
             metadata.drop_all()
             self.__session.commit()
+
+    def all(self, cls=None):
+        """query on the current database session (self.__session)
+            all objects depending of the class name """
+        obj = self.__session.query().all()
+        if cls is None:
+            # query all objects
+            self.objs = self.__session.query(
+                    our_models["User"], 
+                    our_models["City"],
+                    our_models["State"],
+                    our_models["Place"],
+                    our_models["Review"],
+                    our_models["Amenity"]
+                    ).all()
+        else:
+            self.objs = self.session.query(cls).all()
+
+        return (self.objs)
+
+
+    def new(self, obj):
+        """add the object to the current database session"""
+        self.__session.add(obj)
+
+    def save(self):
+        """commit all changes of the current database session"""
+        self.__session.commit()
+
+    def delete(self, obj=None):
+        """delete from the current database session """
+        if obj is not None:
+            self.__session.delete(obj)
+
+    def reload(self):
+        pass
