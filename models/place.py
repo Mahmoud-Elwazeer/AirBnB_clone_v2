@@ -26,7 +26,7 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
 
     user = relationship("User", back_populates="places")
-    cites = relationship("City", back_populates="places")
+    # cites = relationship("City", back_populates="places")
 
     # city_id = ""
     # user_id = ""
