@@ -9,6 +9,7 @@ from models.all_models import our_models
 
 Base = declarative_base()
 
+
 class DBStorage:
     """database storage
     """
@@ -43,18 +44,17 @@ class DBStorage:
         if cls is None:
             # query all objects
             self.objs = self.__session.query(
-                    our_models["User"], 
-                    our_models["City"],
-                    our_models["State"],
-                    our_models["Place"],
-                    our_models["Review"],
-                    our_models["Amenity"]
-                    ).all()
+                our_models["User"],
+                our_models["City"],
+                our_models["State"],
+                our_models["Place"],
+                our_models["Review"],
+                our_models["Amenity"]
+            ).all()
         else:
             self.objs = self.session.query(cls).all()
 
         return (self.objs)
-
 
     def new(self, obj):
         """add the object to the current database session"""
@@ -74,5 +74,6 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
 
         # Create a session with the specified options
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session_factory)
