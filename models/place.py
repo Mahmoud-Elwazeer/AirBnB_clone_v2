@@ -5,6 +5,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
+from models import storage
 import os
 
 
@@ -50,10 +51,16 @@ class Place(BaseModel, Base):
             Getter attribute that returns the list of Review instances 
             with place_id equals to the current Place.id
             """
-            from models import storage
             lst = []
-
             for review in storage.all(Review).values():
                 if self.id == Review.state_id:
                     lst.append(review)
             return lst
+
+    if os.getenv("HBNB_TYPE_STORAGE") != "db":
+        @property
+        def amenities(self):
+            """returns the list of Amenity instances based on 
+            the attribute amenity_ids
+            """
+            lst = []
