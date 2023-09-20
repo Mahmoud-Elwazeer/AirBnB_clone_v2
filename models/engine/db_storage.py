@@ -6,10 +6,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 import os
 from models.all_models import our_models
-import MySQLd
-
-Base = declarative_base()
-
+from models.base_model import BaseModel, Base
 
 class DBStorage:
     """database storage
