@@ -58,9 +58,13 @@ class DBStorage:
         #         # our_models["Amenity"]
         #     ).all()
         # else:
-        objects = self.__session.query("State").all()
-        print(1)
-        print(objects)
+        if cls is None:
+            objects = []
+            for i in our_models.values():
+                obj = self.__session.query(i),all()
+                objects.append(obj)
+        else:
+            objects = self.__session.query("State").all()
         return {f"{obj.__class__.__name__}.{obj.id}": obj for obj in objects}
 
     def new(self, obj):
