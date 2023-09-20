@@ -25,7 +25,8 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
 
-    reviews = relationship("Review", backref="place", cascade="all, delete, save-update")
+    reviews = relationship("Review", backref="place",
+                           cascade="all, delete, save-update")
 
     # cites = relationship("City", back_populates="places")
 
@@ -43,3 +44,18 @@ class Place(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+    @property
+    def cities(self):
+        """
+        Getter attribute that returns a list of City instances
+        with state_id equal to the current State.id
+        """
+
+        from models import storage
+        lst = []
+
+        for city in storage.all(City).values():
+            if self.id == city.state_id:
+                lst.append(city)
+        return lst
