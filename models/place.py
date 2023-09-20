@@ -16,7 +16,7 @@ class Place(BaseModel, Base):
         "cities.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
     user_id = Column(String(60), ForeignKey(
         "users.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
-    name = Column(String(String(120)), nullable=False)
+    name = Column(String(120), nullable=False)
     description = Column(String(1024), nullable=False)
     number_rooms = Column(Integer, nullable=False, default=0)
     number_bathrooms = Column(Integer, nullable=False, default=0)
