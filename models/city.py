@@ -15,5 +15,8 @@ class City(BaseModel, Base):
         "states.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False)
     state = relationship("State", back_populates="cities")
 
+    places = relationship("Place", back_populates="cities",
+                          cascade="all, delete, save-update")
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
