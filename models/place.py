@@ -9,7 +9,7 @@ from models.amenity import Amenity
 import os
 
 
-place_amenities = Table(
+place_amenity = Table(
     'place_amenity', Base.metadata,
     Column("place_id", String(60), ForeignKey("places.id"),
            primary_key=True, nullable=False),
@@ -23,24 +23,19 @@ class Place(BaseModel, Base):
     """
     __tablename__ = "places"
 
-    city_id = Column(String(60), ForeignKey(
-        "cities.id"), nullable=False)
-    user_id = Column(String(60), ForeignKey(
-        "users.id"), nullable=False)
-    name = Column(String(120), nullable=False)
-    description = Column(String(1024), nullable=False)
+    city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
+    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+    name = Column(String(128), nullable=False)
+    description = Column(String(1024))
     number_rooms = Column(Integer, nullable=False, default=0)
     number_bathrooms = Column(Integer, nullable=False, default=0)
     max_guest = Column(Integer, nullable=False, default=0)
     price_by_night = Column(Integer, nullable=False, default=0)
-    latitude = Column(Float, nullable=True)
-    longitude = Column(Float, nullable=True)
-
-    reviews = relationship("Review", backref="place",
-                           cascade="all, delete, save-update")
-    amenities = relationship(
-        "Amenity", secondary=place_amenities, viewonly=False)
-    amenity_ids = []
+    latitude = Column(Float)
+    longitude = Column(Float)
+    reviews = relationship("Review", backref='place', cascade="all, delete")
+    amenities = relationship("Amenity", secondary=place_amenity,
+                             viewonly=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -54,7 +49,7 @@ class Place(BaseModel, Base):
             """
             from models import storage
             lst = []
-            for review in list(storage.all(Review).values()):
+            for review in list(storage.all('Review').values()):
                 if self.id == review.place_id:
                     lst.append(review)
             return lst
@@ -66,7 +61,7 @@ class Place(BaseModel, Base):
             """
             from models import storage
             lst = []
-            for amenity in storage.all(Amenity).values():
+            for amenity in list(storage.all('Amenity').values()):
                 if amenity.id in self.amenity_ids:
                     lst.append(amenity)
             return lst
