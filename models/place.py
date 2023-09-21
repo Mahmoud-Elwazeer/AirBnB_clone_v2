@@ -35,12 +35,12 @@ class Place(BaseModel, Base):
     price_by_night = Column(Integer, nullable=False, default=0)
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
-    amenity_ids = []
 
     reviews = relationship("Review", backref="place",
                            cascade="all, delete, save-update")
     amenities = relationship(
         "Amenity", secondary=place_amenities, viewonly=False)
+    amenity_ids = []
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -54,8 +54,8 @@ class Place(BaseModel, Base):
             """
             from models import storage
             lst = []
-            for review in storage.all(Review).values():
-                if self.id == review.state_id:
+            for review in list(storage.all(Review).values()):
+                if self.id == review.place_id:
                     lst.append(review)
             return lst
 
