@@ -5,13 +5,13 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
-# from models.amenity import Amenity
+# from models.amenity import Amenity   # gives ERROR
 import os
 
 place_amenity = Table(
     'place_amenity', Base.metadata,
     Column("place_id", String(60), ForeignKey("places.id"),
-           pimary_key=True, nullable=False),
+           primary_key=True, nullable=False),
     Column("amenity_id", String(60), ForeignKey("amenities.id"),
            primary_key=True, nullable=False)
 )
@@ -27,7 +27,7 @@ class Place(BaseModel, Base):
     user_id = Column(String(60), ForeignKey(
         "users.id"), nullable=False)
     name = Column(String(120), nullable=False)
-    description = Column(String(1024), nullable=False)
+    description = Column(String(1024))
     number_rooms = Column(Integer, nullable=False, default=0)
     number_bathrooms = Column(Integer, nullable=False, default=0)
     max_guest = Column(Integer, nullable=False, default=0)
