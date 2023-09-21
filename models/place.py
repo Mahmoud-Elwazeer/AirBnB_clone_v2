@@ -5,6 +5,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
+from models.amenity import Amenity
 import os
 
 
@@ -34,11 +35,13 @@ class Place(BaseModel, Base):
     price_by_night = Column(Integer, nullable=False, default=0)
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
+    amenity_ids = []
 
-    reviews = relationship("Review", backref="place",
-                           cascade="all, delete, save-update")
-    amenities = relationship(
-        "Amenity", secondary=place_amenities, viewonly=False)
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+        reviews = relationship("Review", backref="place",
+                               cascade="all, delete, save-update")
+        amenities = relationship(
+            "Amenity", secondary=place_amenities, viewonly=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -57,7 +60,6 @@ class Place(BaseModel, Base):
                     lst.append(review)
             return lst
 
-    if os.getenv("HBNB_TYPE_STORAGE") != "db":
         @property
         def amenities(self):
             """returns the list of Amenity instances based on
@@ -65,3 +67,15 @@ class Place(BaseModel, Base):
             """
             from models import storage
             lst = []
+            for amenity in storage.all(amenity).values():
+                if amenity.id in self.amenity_ids:
+                    lst.append(amenity)
+            return lst
+
+        @amenities.setter
+        def amenities(self, obj):
+            """handles append method for adding an Amenity.id 
+            to the attribute amenity_ids
+            """
+            if isinstance(obj, Amenity):
+                self.amenity_ids.append(obj.id)

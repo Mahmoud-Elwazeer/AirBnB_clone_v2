@@ -16,8 +16,9 @@ class State(BaseModel, Base):
 
     name = Column(String(128), nullable=False)
     # relationsip is one (State) to many (City)
-    cities = relationship('City', backref='state',
-                          cascade="all, delete, save-update")
+    if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+        cities = relationship('City', backref='state',
+                              cascade="all, delete, save-update")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
