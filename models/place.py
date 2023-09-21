@@ -1,20 +1,26 @@
+#!/usr/bin/python3
+"""Place sub-class that inherit from BaseModel
+"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
-from models.amenity import Amenity
+from models import storage
 import os
+
 
 place_amenities = Table(
     'place_amenity', Base.metadata,
     Column("place_id", String(60), ForeignKey("places.id"),
-           primary_key=True, nullable=False),
+           pimary_key=True, nullable=False),
     Column("amenity_id", String(60), ForeignKey("amenities.id"),
            primary_key=True, nullable=False)
 )
 
 
 class Place(BaseModel, Base):
+    """sub class that inherit from BaseModel
+    """
     __tablename__ = "places"
 
     city_id = Column(String(60), ForeignKey(
@@ -29,37 +35,32 @@ class Place(BaseModel, Base):
     price_by_night = Column(Integer, nullable=False, default=0)
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
-    amenity_ids = []
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.amenity_ids = []
 
     reviews = relationship("Review", backref="place",
                            cascade="all, delete, save-update")
     amenities = relationship(
         "Amenity", secondary=place_amenities, viewonly=False)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     if os.getenv("HBNB_TYPE_STORAGE") != "db":
         @property
         def reviews(self):
-            from models import storage
+            """
+            Getter attribute that returns the list of Review instances 
+            with place_id equals to the current Place.id
+            """
             lst = []
             for review in storage.all(Review).values():
-                if self.id == review.place_id:
+                if self.id == Review.state_id:
                     lst.append(review)
             return lst
 
-        # @property
-        # def amenities(self):
-        #     from models import storage
-        #     lst = []
-        #     for amenity in storage.all(Amenity).values():
-        #         if amenity.id in self.amenity_ids:
-        #             lst.append(amenity)
-        #     return lst
-
-        # @amenities.setter
-        # def amenities(self, obj=None):
-        #     if isinstance(obj, Amenity):
-        #         self.amenity_ids.append(obj.id)
+    # if os.getenv("HBNB_TYPE_STORAGE") != "db":
+    #     @property
+    #     def amenities(self):
+    #         """returns the list of Amenity instances based on
+    #         the attribute amenity_ids
+    #         """
+    #         lst = []
