@@ -63,6 +63,7 @@ class Place(BaseModel, Base):
         """returns the list of Amenity instances based on
         the attribute amenity_ids
         """
+        from models.amenity import Amenity
         from models import storage
         lst = []
         for amenity in list(storage.all(Amenity).values()):
@@ -72,5 +73,6 @@ class Place(BaseModel, Base):
 
     @amenities.setter
     def amenities(self, value):
+        from models.amenity import Amenity
         if type(value) == Amenity:
             self.amenity_ids.append(value.id)
