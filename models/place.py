@@ -37,7 +37,6 @@ class Place(BaseModel, Base):
 
     reviews = relationship("Review", backref="place",
                            cascade="all, delete, save-update")
-
     amenities = relationship(
         "Amenity", secondary=place_amenities, viewonly=False)
 
@@ -51,16 +50,16 @@ class Place(BaseModel, Base):
                     lst.append(review)
             return lst
 
-        @property
-        def amenities(self):
-            from models import storage
-            lst = []
-            for amenity in storage.all(Amenity).values():
-                if amenity.id in self.amenity_ids:
-                    lst.append(amenity)
-            return lst
+        # @property
+        # def amenities(self):
+        #     from models import storage
+        #     lst = []
+        #     for amenity in storage.all(Amenity).values():
+        #         if amenity.id in self.amenity_ids:
+        #             lst.append(amenity)
+        #     return lst
 
-        @amenities.setter
-        def amenities(self, obj=None):
-            if isinstance(obj, Amenity):
-                self.amenity_ids.append(obj.id)
+        # @amenities.setter
+        # def amenities(self, obj=None):
+        #     if isinstance(obj, Amenity):
+        #         self.amenity_ids.append(obj.id)
