@@ -172,23 +172,23 @@ class HBNBCommand(cmd.Cmd):
                     pass
             print(len(out_all))
 
-    # def precmd(self, line):
-    #     """method used for splitting the line and convert it to
-    #     keywords
-    #     EX: User.all()
-    #     all user
-    #     """
-    #     if "." in line:
-    #         class_name, others = line.split(".")
-    #         adv_func = ["all", "count", "show", "destroy"]
-    #         func, attr = others.split("(")
-    #         if (func in adv_func):
-    #             line = func + " " + class_name + " " + attr[1:-2]
-    #         else:
-    #             id, name, value,  = attr.split(',')
-    #             line = func + ' ' + class_name + ' ' + id[1:-1]  \
-    #                 + ' ' + name[2:-1] + ' ' + value[:-1]
-    #     return cmd.Cmd.precmd(self, line)
+    def precmd(self, line):
+        """method used for splitting the line and convert it to
+        keywords
+        EX: User.all()
+        all user
+        """
+        if "." in line:
+            class_name, others = line.split(".")
+            adv_func = ["all", "count", "show", "destroy"]
+            func, attr = others.split("(")
+            if (func in adv_func):
+                line = func + " " + class_name + " " + attr[1:-2]
+            else:
+                id, name, value,  = attr.split(',')
+                line = func + ' ' + class_name + ' ' + id[1:-1]  \
+                    + ' ' + name[2:-1] + ' ' + value[:-1]
+        return cmd.Cmd.precmd(self, line)
 
 
 if __name__ == '__main__':
