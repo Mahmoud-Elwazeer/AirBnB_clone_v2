@@ -8,7 +8,7 @@ from models.review import Review
 import os
 
 
-place_amenities = Table(
+place_amenity = Table(
     'place_amenity', Base.metadata,
     Column("place_id", String(60), ForeignKey("places.id"),
            pimary_key=True, nullable=False),
@@ -38,22 +38,21 @@ class Place(BaseModel, Base):
     reviews = relationship("Review", backref="place",
                            cascade="all, delete, save-update")
     amenities = relationship(
-        "Amenity", secondary=place_amenities, viewonly=False)
+        "Amenity", secondary=place_amenity, viewonly=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    if os.getenv("HBNB_TYPE_STORAGE") != "db":
-        @property
-        def reviews(self):
-            """
-            Getter attribute that returns the list of Review instances 
-            with place_id equals to the current Place.id
-            """
-            from models import storage
-            lst = []
+    @property
+    def reviews(self):
+        """
+        Getter attribute that returns the list of Review instances 
+        with place_id equals to the current Place.id
+        """
+        from models import storage
+        lst = []
 
-            for review in storage.all(Review).values():
-                if self.id == review.place_id:
-                    lst.append(review)
-            return lst
+        for review in storage.all(Review).values():
+            if self.id == review.place_id:
+                lst.append(review)
+        return lst
