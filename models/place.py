@@ -5,8 +5,8 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
-# from models.amenity import Amenity
-
+from models.amenity import Amenity
+import os
 
 place_amenity = Table(
     'place_amenity', Base.metadata,
@@ -44,36 +44,34 @@ class Place(BaseModel, Base):
         super().__init__(*args, **kwargs)
         # self.amenity_ids = []
 
-    @property
-    def reviews(self):
-        """
-        Getter attribute that returns the list of Review instances 
-        with place_id equals to the current Place.id
-        """
-        from models import storage
-        lst = []
+    if os.getenv("HBNB_TYPE_STORAGE", None) != "db":
+        @property
+        def reviews(self):
+            """
+            Getter attribute that returns the list of Review instances 
+            with place_id equals to the current Place.id
+            """
+            from models import storage
+            lst = []
 
-        for review in storage.all(Review).values():
-            if self.id == review.place_id:
-                lst.append(review)
-        return lst
+            for review in list(storage.all(Review).values()):
+                if self.id == review.place_id:
+                    lst.append(review)
+            return lst
 
-    @property
-    def amenities(self):
-        """returns the list of Amenity instances based on
-        the attribute amenity_ids
-        """
-        from models import storage
-        my_list = []
-        for amenity in storage.all('Amenity').values():
-            if amenity.id in self.amenity_ids:
-                my_list.append(amenity)
-        return my_list
+        @property
+        def amenities(self):
+            """returns the list of Amenity instances based on
+            the attribute amenity_ids
+            """
+            from models import storage
+            lst = []
+            for amenity in list(storage.all(Amenity).values()):
+                if amenity.id in self.amenity_ids:
+                    lst.append(amenity)
+            return lst
 
-    @amenities.setter
-    def amenities(self, obj):
-        """Setter attribute that handles append method for adding an Amenity.id
-        to the attribute amenity_ids.
-        """
-        if isinstance(obj, 'Amenity'):
-            self.amenity_id.append(obj.id)
+        @amenities.setter
+        def amenities(self, value):
+            if type(value) == Amenity:
+                self.amenity_ids.append(value.id)
