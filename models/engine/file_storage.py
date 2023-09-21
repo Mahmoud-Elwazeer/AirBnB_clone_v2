@@ -21,8 +21,8 @@ class FileStorage:
         of one type of class if cls is not None
         """
         if cls is not None:
+            obj = {}
             for key, value in self.__objects.items():
-                obj = {}
                 class_name, obj_id = key.split('.')
                 if class_name == cls.__name__:
                     obj[key] = value
