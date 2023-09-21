@@ -5,14 +5,13 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.review import Review
-from models.amenity import Amenity
 import os
 
 
-place_amenity = Table(
+place_amenities = Table(
     'place_amenity', Base.metadata,
     Column("place_id", String(60), ForeignKey("places.id"),
-           primary_key=True, nullable=False),
+           pimary_key=True, nullable=False),
     Column("amenity_id", String(60), ForeignKey("amenities.id"),
            primary_key=True, nullable=False)
 )
@@ -23,19 +22,23 @@ class Place(BaseModel, Base):
     """
     __tablename__ = "places"
 
-    city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-    user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-    name = Column(String(128), nullable=False)
-    description = Column(String(1024))
+    city_id = Column(String(60), ForeignKey(
+        "cities.id"), nullable=False)
+    user_id = Column(String(60), ForeignKey(
+        "users.id"), nullable=False)
+    name = Column(String(120), nullable=False)
+    description = Column(String(1024), nullable=False)
     number_rooms = Column(Integer, nullable=False, default=0)
     number_bathrooms = Column(Integer, nullable=False, default=0)
     max_guest = Column(Integer, nullable=False, default=0)
     price_by_night = Column(Integer, nullable=False, default=0)
-    latitude = Column(Float)
-    longitude = Column(Float)
-    reviews = relationship("Review", backref='place', cascade="all, delete")
-    amenities = relationship("Amenity", secondary=place_amenity,
-                             viewonly=False)
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
+
+    reviews = relationship("Review", backref="place",
+                           cascade="all, delete, save-update")
+    amenities = relationship(
+        "Amenity", secondary=place_amenities, viewonly=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -49,28 +52,8 @@ class Place(BaseModel, Base):
             """
             from models import storage
             lst = []
-            for review in list(storage.all('Review').values()):
+
+            for review in storage.all(Review).values():
                 if self.id == review.place_id:
                     lst.append(review)
             return lst
-
-        @property
-        def amenities(self):
-            """returns the list of Amenity instances based on
-            the attribute amenity_ids
-            """
-            from models import storage
-            lst = []
-            for amenity in list(storage.all('Amenity').values()):
-                if amenity.id in self.amenity_ids:
-                    lst.append(amenity)
-            return lst
-
-        @amenities.setter
-        def amenities(self, obj=None):
-            """handles append method for adding an Amenity.id 
-            to the attribute amenity_ids
-            otherwise do nothing
-            """
-            if obj is not None and isinstance(obj, 'Amenity'):
-                self.amenity_ids.append(obj.id)
