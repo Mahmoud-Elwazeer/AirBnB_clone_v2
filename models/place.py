@@ -64,8 +64,9 @@ class Place(BaseModel, Base):
         """
         from models import storage
         my_list = []
-        for amenity in storage.all('Amenity').values():
-            if amenity.id in self.amenity_ids:
+        extracted_amenities = storage.all('Amenity').values()
+        for amenity in extracted_amenities:
+            if self.id == amenity.amenity_ids:
                 my_list.append(amenity)
         return my_list
 
@@ -74,5 +75,5 @@ class Place(BaseModel, Base):
         """Setter attribute that handles append method for adding an Amenity.id
         to the attribute amenity_ids.
         """
-        if obj is not None and isinstance(obj, 'Amenity'):
+        if isinstance(obj, 'Amenity'):
             self.amenity_id.append(obj.id)
