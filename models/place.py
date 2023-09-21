@@ -42,6 +42,7 @@ class Place(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.amenity_ids = []
 
     @property
     def reviews(self):
@@ -64,9 +65,8 @@ class Place(BaseModel, Base):
         """
         from models import storage
         my_list = []
-        extracted_amenities = storage.all('Amenity').values()
-        for amenity in extracted_amenities:
-            if self.id == amenity.amenity_ids:
+        for amenity in storage.all('Amenity').values():
+            if amenity.id in self.amenity_ids:
                 my_list.append(amenity)
         return my_list
 
