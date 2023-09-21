@@ -41,6 +41,7 @@ class Place(BaseModel, Base):
                                cascade="all, delete, save-update")
         amenities = relationship(
             "Amenity", secondary=place_amenity, viewonly=False)
+        amenity_ids = []
 
     else:
         city_id = ""
@@ -87,7 +88,9 @@ class Place(BaseModel, Base):
             return lst
 
         @amenities.setter
-        def amenities(self, value):
+        def amenities(self, obj):
+            """setter for ameneties
+            """
             from models.amenity import Amenity
-            if type(value) == Amenity:
-                self.amenity_ids.append(value.id)
+            if isinstance(obj, Amenity):
+                self.amenity_ids.append(obj.id)
