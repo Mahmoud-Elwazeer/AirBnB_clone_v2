@@ -42,7 +42,7 @@ class Place(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.amenity_ids = []
+        # self.amenity_ids = []
 
     @property
     def reviews(self):
@@ -58,22 +58,22 @@ class Place(BaseModel, Base):
                 lst.append(review)
         return lst
 
-    # @property
-    # def amenities(self):
-    #     """returns the list of Amenity instances based on
-    #     the attribute amenity_ids
-    #     """
-    #     from models import storage
-    #     my_list = []
-    #     for amenity in storage.all('Amenity').values():
-    #         if amenity.id in self.amenity_ids:
-    #             my_list.append(amenity)
-    #     return my_list
+    @property
+    def amenities(self):
+        """returns the list of Amenity instances based on
+        the attribute amenity_ids
+        """
+        from models import storage
+        my_list = []
+        for amenity in storage.all('Amenity').values():
+            if amenity.id in self.amenity_ids:
+                my_list.append(amenity)
+        return my_list
 
-    # @amenities.setter
-    # def amenities(self, obj):
-    #     """Setter attribute that handles append method for adding an Amenity.id
-    #     to the attribute amenity_ids.
-    #     """
-    #     if isinstance(obj, 'Amenity'):
-    #         self.amenity_id.append(obj.id)
+    @amenities.setter
+    def amenities(self, obj):
+        """Setter attribute that handles append method for adding an Amenity.id
+        to the attribute amenity_ids.
+        """
+        if isinstance(obj, 'Amenity'):
+            self.amenity_id.append(obj.id)
