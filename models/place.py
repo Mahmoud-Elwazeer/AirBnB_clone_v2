@@ -44,34 +44,33 @@ class Place(BaseModel, Base):
         super().__init__(*args, **kwargs)
         # self.amenity_ids = []
 
-    if os.getenv("HBNB_TYPE_STORAGE", None) != "db":
-        @property
-        def reviews(self):
-            """
-            Getter attribute that returns the list of Review instances 
-            with place_id equals to the current Place.id
-            """
-            from models import storage
-            lst = []
+    @property
+    def reviews(self):
+        """
+        Getter attribute that returns the list of Review instances 
+        with place_id equals to the current Place.id
+        """
+        from models import storage
+        lst = []
 
-            for review in list(storage.all(Review).values()):
-                if self.id == review.place_id:
-                    lst.append(review)
-            return lst
+        for review in list(storage.all(Review).values()):
+            if self.id == review.place_id:
+                lst.append(review)
+        return lst
 
-        @property
-        def amenities(self):
-            """returns the list of Amenity instances based on
-            the attribute amenity_ids
-            """
-            from models import storage
-            lst = []
-            for amenity in list(storage.all(Amenity).values()):
-                if amenity.id in self.amenity_ids:
-                    lst.append(amenity)
-            return lst
+    @property
+    def amenities(self):
+        """returns the list of Amenity instances based on
+        the attribute amenity_ids
+        """
+        from models import storage
+        lst = []
+        for amenity in list(storage.all(Amenity).values()):
+            if amenity.id in self.amenity_ids:
+                lst.append(amenity)
+        return lst
 
-        @amenities.setter
-        def amenities(self, value):
-            if type(value) == Amenity:
-                self.amenity_ids.append(value.id)
+    @amenities.setter
+    def amenities(self, value):
+        if type(value) == Amenity:
+            self.amenity_ids.append(value.id)
