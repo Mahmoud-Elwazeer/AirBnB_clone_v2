@@ -8,13 +8,14 @@ from models.review import Review
 import os
 import models
 
-# place_amenities = Table(
-#     'place_amenity', Base.metadata,
-#     Column("place_id", String(60), ForeignKey("places.id"),
-#            pimary_key=True, nullable=False),
-#     Column("amenity_id", String(60), ForeignKey("amenities.id"),
-#            primary_key=True, nullable=False)
-# )
+if (models.storage_type == "db"):
+    place_amenities = Table(
+        'place_amenity', Base.metadata,
+        Column("place_id", String(60), ForeignKey("places.id"),
+            pimary_key=True, nullable=False),
+        Column("amenity_id", String(60), ForeignKey("amenities.id"),
+            primary_key=True, nullable=False)
+    )
 
 
 class Place(BaseModel, Base):
@@ -38,8 +39,8 @@ class Place(BaseModel, Base):
 
         reviews = relationship("Review", backref="place",
                             cascade="all, delete, save-update")
-        # amenities = relationship(
-        #     "Amenity", secondary=place_amenities, viewonly=False)
+        amenities = relationship(
+            "Amenity", secondary=place_amenities, viewonly=False)
 
     else:
         city_id = ""
