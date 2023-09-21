@@ -44,25 +44,25 @@ class DBStorage:
         #     metadata.drop_all()
         #     self.__session.commit()
 
-    def all(self, cls=None):
-        """query on the current database session (self.__session)
-            all objects depending of the class name """
-        if cls is None:
-            objects = []
-            out_dict = {}
-            for i in our_models.values():
-                if (i == BaseModel):
-                    continue
-                objects.extend(self.__session.query(i).all())
-                # obj = self.__session.query(i).all()
-                # objects.append(obj)
-        else:
-            objects = self.__session.query(cls).all()
+    # def all(self, cls=None):
+    #     """query on the current database session (self.__session)
+    #         all objects depending of the class name """
+    #     if cls is None:
+    #         objects = []
+    #         out_dict = {}
+    #         for i in our_models.values():
+    #             if (i == BaseModel):
+    #                 continue
+    #             objects.extend(self.__session.query(i).all())
+    #             # obj = self.__session.query(i).all()
+    #             # objects.append(obj)
+    #     else:
+    #         objects = self.__session.query(cls).all()
 
-        for obj in objects:
-            key = obj.__class__.__name__ + '.' + obj.id
-            out_dict[key] = obj
-        return out_dict
+    #     for obj in objects:
+    #         key = obj.__class__.__name__ + '.' + obj.id
+    #         out_dict[key] = obj
+    #     return out_dict
 
     def new(self, obj):
         """add the object to the current database session"""
