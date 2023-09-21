@@ -7,22 +7,26 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from models.city import City
 import os
-
+import models
 
 class State(BaseModel, Base):
     """sub class that inherit from BaseModel
     """
-    __tablename__ = "states"
+    if (models.storage_type == "db"):
+        __tablename__ = "states"
 
-    name = Column(String(128), nullable=False)
-    # relationsip is one (State) to many (City)
-    cities = relationship('City', backref='state',
-                          cascade="all, delete, save-update")
+        name = Column(String(128), nullable=False)
+        # relationsip is one (State) to many (City)
+        cities = relationship('City', backref='state',
+                            cascade="all, delete, save-update")
+    else:
+        name = ""
+        cities = ""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    if os.getenv("HBNB_TYPE_STORAGE") != "db":
+    if (models.storage_type == "db"):
         @property
         def cities(self):
             """

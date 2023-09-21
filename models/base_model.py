@@ -6,19 +6,22 @@ import models
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 
-Base = declarative_base()
+if (models.storage_type == "db"):
+    Base = declarative_base()
+else:
+    Base = object
 
 
 class BaseModel:
     """BaseModel that defines all common attributes/methods
     for other classes
     """
-
-    id = Column(String(60), unique=True, primary_key=True, nullable=False)
-    created_at = Column(DateTime, nullable=False,
-                        default=datetime.utcnow())
-    updated_at = Column(DateTime, nullable=False,
-                        default=datetime.utcnow())
+    if (models.storage_type == "db"):
+        id = Column(String(60), unique=True, primary_key=True, nullable=False)
+        created_at = Column(DateTime, nullable=False,
+                            default=datetime.utcnow())
+        updated_at = Column(DateTime, nullable=False,
+                            default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
         """init magic method
