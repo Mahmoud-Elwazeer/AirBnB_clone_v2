@@ -43,10 +43,11 @@ class Place(BaseModel, Base):
         amenities = relationship(
             "Amenity", secondary=place_amenities, viewonly=False)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
 
-    if os.getenv("HBNB_TYPE_STORAGE") != "db":
+    # if os.getenv("HBNB_TYPE_STORAGE") != "db":
+    else:
         @property
         def reviews(self):
             """
@@ -73,9 +74,10 @@ class Place(BaseModel, Base):
             return lst
 
         @amenities.setter
-        def amenities(self, obj):
+        def amenities(self, obj=None):
             """handles append method for adding an Amenity.id 
             to the attribute amenity_ids
+            otherwise do nothing
             """
             if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)
