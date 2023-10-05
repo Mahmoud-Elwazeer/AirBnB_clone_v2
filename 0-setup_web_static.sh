@@ -18,7 +18,7 @@ data="<html>
 
 echo "$data" > sudo tee /data/web_static/releases/test/index.html
 
-sudo ln -s /data/web_static/releases/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 chown ubuntu:ubuntu /data/
 
