@@ -4,7 +4,6 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install nginx -y
-ufw allow 'Nginx HTTP'
 
 sudo mkdir -p /data/ /data/web_static/ /data/web_static/releases/
 sudo mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
@@ -17,7 +16,7 @@ data="<html>
   </body>
 </html>"
 
-echo "$data" > /data/web_static/releases/test/index.html
+echo "$data" > sudo tee /data/web_static/releases/test/index.html
 
 sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 
@@ -34,4 +33,4 @@ conf="server {
 }"
 
 echo "$conf" > /etc/nginx/conf.d/hbnb.conf
-sudo systemctl reload nginx
+sudo service nginx start
