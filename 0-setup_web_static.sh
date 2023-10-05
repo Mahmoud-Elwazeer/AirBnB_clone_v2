@@ -32,5 +32,5 @@ conf="server {
 
 }"
 
-echo "$conf" >sudo tee /etc/nginx/conf.d/hbnb.conf
+echo "$conf" >sudo tee /etc/nginx/sites-enabled/default
 sudo service nginx start
