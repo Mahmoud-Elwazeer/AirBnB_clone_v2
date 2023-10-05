@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 #  sets up your web servers for the deployment of web_static
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install nginx -y
-ufw allow 'Nginx HTTP'
 
-mkdir -p /data/ /data/web_static/ /data/web_static/releases/
-mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
+sudo mkdir -p /data/ /data/web_static/ /data/web_static/releases/
+sudo mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
 
 data="<html>
   <head>
@@ -18,7 +14,7 @@ data="<html>
 
 echo "$data" > /data/web_static/releases/test/index.html
 
-ln -s /data/web_static/releases/test/ /data/web_static/current
+sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 
 chown ubuntu:ubuntu /data/
 
@@ -32,4 +28,5 @@ conf="server {
 
 }"
 
-echo "$conf" > "/etc/nginx/conf.d/hbnb.conf"
+echo "$conf" > /etc/nginx/conf.d/hbnb.conf
+sudo systemctl reload nginx
