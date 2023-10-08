@@ -25,6 +25,7 @@ conf="server {
         listen 80 default_server;
         index index.html index.htm;
         server_name mahmoudelwazeer.tech;
+        add_header X-Served-By $HOSTNAME;
         root /data/web_static;
 
         location /hbnb_static/{
