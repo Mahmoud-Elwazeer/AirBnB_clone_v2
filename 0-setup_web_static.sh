@@ -30,10 +30,6 @@ conf="server {
         add_header X-Served-By $HOSTNAME;
         root /var/www/html;
 
-        location /{
-                try_files $uri $uri/ $uri.html =400;
-        }
-
         location /hbnb_static/{
                 alias /data/web_static/current/;
         }
