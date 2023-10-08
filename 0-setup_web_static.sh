@@ -29,10 +29,9 @@ conf="server {
 
         location /hbnb_static/{
                 alias /data/web_static/current/;
-                index index.html index.htm;
         }
 
 }"
 
 echo "$conf" | sudo tee /etc/nginx/conf.d/hbnb.conf
-sudo service nginx reload
+sudo service nginx start
