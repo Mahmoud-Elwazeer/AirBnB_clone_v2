@@ -24,11 +24,15 @@ ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -hR ubuntu:ubuntu /data/
 
 conf="server {
-        listen 80 default_server;
+        listen *:80 default_server;
         index index.html index.htm;
         server_name mahmoudelwazeer.tech;
         add_header X-Served-By $HOSTNAME;
         root /var/www/tech.local;
+
+        location /{
+                try_files $uri $uri/ $uri.html =400;
+        }
 
         location /hbnb_static/{
                 alias /data/web_static/current/;
