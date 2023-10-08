@@ -37,4 +37,4 @@ conf="server {
 }"
 
 echo "$conf" | tee /etc/nginx/conf.d/hbnb.conf
-service nginx reload
+service nginx restart
