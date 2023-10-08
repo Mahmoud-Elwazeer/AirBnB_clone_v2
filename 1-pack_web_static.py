@@ -9,8 +9,8 @@ def do_pack():
     try:
         local("mkdir -p versions")
         time = datetime.now().strftime("%Y%m%d%H%M%S")
-        arch_name = f"web_static_{time}.tgz"
-        local(f"tar -cvzf versions/{arch_name} web_static")
-        return (f"versions/{arch_name}")
+        arch_name = "web_static_{}.tgz".format(time)
+        local("tar -cvzf versions/{} web_static".format(arch_name))
+        return ("versions/{}".format(arch_name))
     except Exception:
         return None
