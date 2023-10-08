@@ -2,7 +2,9 @@
 #  sets up your web servers for the deployment of web_static
 
 apt-get update -y
+apt-get upgrad -y
 apt-get install nginx -y
+ufw allow 'Nginx HTTP'
 
 mkdir -p /data/ /data/web_static/ /data/web_static/releases/
 mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
