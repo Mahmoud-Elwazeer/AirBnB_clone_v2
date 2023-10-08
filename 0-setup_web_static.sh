@@ -26,7 +26,7 @@ conf="server {
         index index.html index.htm;
         server_name mahmoudelwazeer.tech;
         add_header X-Served-By $HOSTNAME;
-        root /data/web_static;
+        root /var/www/tech.local;
 
         location /hbnb_static/{
                 alias /data/web_static/current/;
@@ -35,4 +35,4 @@ conf="server {
 }"
 
 echo "$conf" | sudo tee /etc/nginx/conf.d/hbnb.conf
-sudo service nginx start
+sudo service nginx reload
