@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #  sets up your web servers for the deployment of web_static
 
-sudo apt-get update -y
-sudo apt-get install nginx -y
+apt-get update -y
+apt-get install nginx -y
 
-sudo mkdir -p /data/ /data/web_static/ /data/web_static/releases/
-sudo mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
+mkdir -p /data/ /data/web_static/ /data/web_static/releases/
+mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
 
 data="<html>
   <head>
@@ -15,11 +15,11 @@ data="<html>
   </body>
 </html>"
 
-echo "$data" | sudo tee /data/web_static/releases/test/index.html
+echo "$data" | tee /data/web_static/releases/test/index.html
 
-sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-sudo chown -hR ubuntu:ubuntu /data/
+chown -hR ubuntu:ubuntu /data/
 
 conf="server {
         listen 80 default_server;
@@ -34,5 +34,5 @@ conf="server {
 
 }"
 
-echo "$conf" | sudo tee /etc/nginx/conf.d/hbnb.conf
-sudo service nginx reload
+echo "$conf" | tee /etc/nginx/conf.d/hbnb.conf
+service nginx reload
