@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """New engine for database
 """
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from sqlalchemy.ext.declarative import declarative_base
 import os
 from models.all_models import our_models
 from models.base_model import BaseModel, Base
@@ -32,9 +31,9 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
         # Create the current database session with expire_on_commit=False
-        session_factory = sessionmaker(
-            bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(session_factory)
+        # session_factory = sessionmaker(
+        #     bind=self.__engine, expire_on_commit=False)
+        # self.__session = scoped_session(session_factory)
 
         # Session = sessionmaker(bind=self.__engine)
         # self.__session = Session()
@@ -43,6 +42,7 @@ class DBStorage:
         # if os.getenv("HBNB_ENV") == "test":
         #     metadata.drop_all()
         #     self.__session.commit()
+        print(1)
 
     def all(self, cls=None):
         """query on the current database session (self.__session)
@@ -86,12 +86,14 @@ class DBStorage:
 
     def reload(self):
         """create all tables in the database"""
+        print(2)
         Base.metadata.create_all(self.__engine)
-
+        print(3)
         # Create a session with the specified options
         session_factory = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session_factory)
+        print(4)
 
     def close(self):
         self.__session.remove()
