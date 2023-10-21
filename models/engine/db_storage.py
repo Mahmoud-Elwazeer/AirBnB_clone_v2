@@ -42,7 +42,6 @@ class DBStorage:
         # if os.getenv("HBNB_ENV") == "test":
         #     metadata.drop_all()
         #     self.__session.commit()
-        print(1)
 
     def all(self, cls=None):
         """query on the current database session (self.__session)
@@ -86,14 +85,11 @@ class DBStorage:
 
     def reload(self):
         """create all tables in the database"""
-        print(2)
         Base.metadata.create_all(self.__engine)
-        print(3)
         # Create a session with the specified options
         session_factory = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session_factory)
-        print(4)
 
     def close(self):
         self.__session.remove()
