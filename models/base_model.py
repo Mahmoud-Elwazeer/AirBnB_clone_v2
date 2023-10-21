@@ -17,7 +17,7 @@ class BaseModel:
     for other classes
     """
     if (models.storage_type == "db"):
-        id = Column(String(60), unique=True, primary_key=True, nullable=False)
+        id = Column(String(60), unique=True, primary_key=True)
         created_at = Column(DateTime, default=datetime.utcnow())
         updated_at = Column(DateTime, default=datetime.utcnow())
 
@@ -53,7 +53,7 @@ class BaseModel:
     def __str__(self):
         """string representation of instance
         """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """updates the public instance attribute updated_at

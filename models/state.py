@@ -2,9 +2,9 @@
 """State sub-class that inherit from BaseModel
 """
 from models.base_model import BaseModel, Base
+from models.city import City
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from models.city import City
 import models
 
 class State(BaseModel, Base):
@@ -12,7 +12,6 @@ class State(BaseModel, Base):
     """
     if (models.storage_type == "db"):
         __tablename__ = "states"
-
         name = Column(String(128), nullable=False)
         # relationsip is one (State) to many (City)
         cities = relationship('City', backref='state')

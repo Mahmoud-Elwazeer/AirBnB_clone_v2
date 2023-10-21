@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in our_models.keys():
             print("** class doesn't exist **")
         else:
-            storage.reload()
+            # storage.reload()
             self.my_model = our_models[args[0]]()
             print(self.my_model.id)
             for i in range(1, len(args)):
