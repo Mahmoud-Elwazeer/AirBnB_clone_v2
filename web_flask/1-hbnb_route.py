@@ -11,5 +11,11 @@ def homepage():
     return "Hello HBNB!"
 
 
+@hbnb.route("/hbnb", strict_slashes=False)
+def hbnb():
+    """HBNB page"""
+    return "HBNB"
+
+
 if __name__ == "__main__":
     hbnb.run(debug=True, host="0.0.0.0", port=5000)
