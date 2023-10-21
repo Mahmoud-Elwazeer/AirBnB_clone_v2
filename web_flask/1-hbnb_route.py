@@ -12,7 +12,7 @@ def homepage():
 
 
 @hbnb.route("/hbnb", strict_slashes=False)
-def hbnb():
+def hbnbpage():
     """HBNB page"""
     return "HBNB"
 
