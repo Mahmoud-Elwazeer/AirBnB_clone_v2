@@ -38,5 +38,11 @@ def numberpage(n):
     return f"{n} is a number"
 
 
+@hbnb.route("/number_template/<int:n>", strict_slashes=False)
+def numberhtml(n):
+    """Number html"""
+    return render_template("5-number.html", n=n)
+
+
 if __name__ == "__main__":
     hbnb.run(debug=True, host="0.0.0.0", port=5000)
