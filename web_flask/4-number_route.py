@@ -32,5 +32,11 @@ def ptyhonpage(text="is cool"):
     return f"Python {text}"
 
 
+@hbnb.route("/number/<int:n>", strict_slashes=False)
+def numberpage(n):
+    """Number page"""
+    return f"{n} is a number"
+
+
 if __name__ == "__main__":
     hbnb.run(debug=True, host="0.0.0.0", port=5000)
