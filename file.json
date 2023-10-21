@@ -1,48 +1,30 @@
 {
-    "State.d8464d53-3cd1-4d26-9699-10afebbfd79d": {
-        "id": "d8464d53-3cd1-4d26-9699-10afebbfd79d",
-        "created_at": "2023-09-21T18:08:08.051653",
-        "updated_at": "2023-09-21T18:08:08.051654",
+    "State.5d6d5727-b547-4c44-818b-4d0dfb4b1502": {
+        "id": "5d6d5727-b547-4c44-818b-4d0dfb4b1502",
+        "created_at": "2023-10-21T21:18:33.021497",
+        "updated_at": "2023-10-21T21:18:33.021500",
         "name": "California",
         "__class__": "State"
     },
-    "State.aacff19b-2cdd-4cb0-923e-5f0fda829edf": {
-        "id": "aacff19b-2cdd-4cb0-923e-5f0fda829edf",
-        "created_at": "2023-09-21T18:09:27.873594",
-        "updated_at": "2023-09-21T18:09:27.873596",
+    "State.29ff1f3e-0159-4f78-932d-ce2545d42563": {
+        "id": "29ff1f3e-0159-4f78-932d-ce2545d42563",
+        "created_at": "2023-10-21T21:18:33.021678",
+        "updated_at": "2023-10-21T21:18:33.021679",
+        "name": "Nevada",
+        "__class__": "State"
+    },
+    "State.5e6e1368-bf17-4977-9595-f5e171cc5a55": {
+        "id": "5e6e1368-bf17-4977-9595-f5e171cc5a55",
+        "created_at": "2023-10-21T21:19:00.497339",
+        "updated_at": "2023-10-21T21:19:00.497341",
         "name": "California",
         "__class__": "State"
     },
-    "State.ed48e1f4-5479-4ae3-aca6-84c7c436315e": {
-        "id": "ed48e1f4-5479-4ae3-aca6-84c7c436315e",
-        "created_at": "2023-09-21T18:18:35.950197",
-        "updated_at": "2023-09-21T18:18:35.950200",
-        "name": "California",
+    "State.660a4012-179f-4511-9e0f-5028cdca2557": {
+        "id": "660a4012-179f-4511-9e0f-5028cdca2557",
+        "created_at": "2023-10-21T21:19:00.497649",
+        "updated_at": "2023-10-21T21:19:00.497650",
+        "name": "Nevada",
         "__class__": "State"
-    },
-    "State.cbc94baa-1821-4525-8d29-ea2eb21906a1": {
-        "id": "cbc94baa-1821-4525-8d29-ea2eb21906a1",
-        "created_at": "2023-09-22T00:50:37.311909",
-        "updated_at": "2023-09-22T00:50:37.312030",
-        "__class__": "State"
-    },
-    "State.eb6985c9-bf42-46c9-bfb6-b53b4c15f0cc": {
-        "id": "eb6985c9-bf42-46c9-bfb6-b53b4c15f0cc",
-        "created_at": "2023-09-22T00:52:56.197467",
-        "updated_at": "2023-09-22T00:52:56.197546",
-        "__class__": "State"
-    },
-    "User.312b4f13-4307-49a7-9b69-edf39559e7e4": {
-        "id": "312b4f13-4307-49a7-9b69-edf39559e7e4",
-        "created_at": "2023-09-22T01:01:18.841091",
-        "updated_at": "2023-09-22T01:01:18.841132",
-        "__class__": "User"
-    },
-    "User.934f7052-b110-41c6-af24-e8b32cd4b1cf": {
-        "id": "934f7052-b110-41c6-af24-e8b32cd4b1cf",
-        "created_at": "2023-09-22T01:01:24.680550",
-        "updated_at": "2023-09-22T01:01:24.680938",
-        "name": "\"ali\"",
-        "__class__": "User"
     }
 }
