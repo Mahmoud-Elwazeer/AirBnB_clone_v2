@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 """import libraries"""
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
-import sys
-from os import getenv
-
-sys.path.append('..')
-
+from models import *
 from models import storage
-from models.state import State
+# import sys
+
+# sys.path.append('..')
+
+# from models import storage
+# from models.state import State
 
 
 hbnb = Flask(__name__)
