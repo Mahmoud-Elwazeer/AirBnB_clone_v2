@@ -12,6 +12,9 @@ else:
     Base = object
 
 
+time = "%Y-%m-%dT%H:%M:%S.%f"
+
+
 class BaseModel:
     """BaseModel that defines all common attributes/methods
     for other classes
@@ -37,18 +40,18 @@ class BaseModel:
             self.updated_at = datetime.now()
         else:
             for key, value in kwargs.items():
-                if key == "__class__":
-                    pass
-                elif key == "created_at":
-                    # convert string format into datetime object
-                    # datetime.strptime(string_format, datetime_fromat)
-                    self.created_at = datetime.strptime(
-                        kwargs["created_at"], dt_format)
-                elif key == "updated_at":
-                    self.updated_at = datetime.strptime(
-                        kwargs["updated_at"], dt_format)
-                else:
+                if key != "__class__":
                     setattr(self, key, value)
+            if kwargs.get("created_at", None) and type(self.created_at) is str:
+                self.created_at = datetime.strptime(kwargs["created_at"], time)
+            else:
+                self.created_at = datetime.utcnow()
+            if kwargs.get("updated_at", None) and type(self.updated_at) is str:
+                self.updated_at = datetime.strptime(kwargs["updated_at"], time)
+            else:
+                self.updated_at = datetime.utcnow()
+            if kwargs.get("id", None) is None:
+                self.id = str(uuid.uuid4())
 
     def __str__(self):
         """string representation of instance
@@ -67,7 +70,6 @@ class BaseModel:
         """returns a dictionary containing all keys/values
         of the instance
         """
-        time = "%Y-%m-%dT%H:%M:%S.%f"
         # class_name = self.__class__.__name__
         # self.created_at = self.created_at.strftime(time)
         # self.updated_at = self.updated_at.strftime(time)
