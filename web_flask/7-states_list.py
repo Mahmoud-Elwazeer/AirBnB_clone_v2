@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """import libraries"""
 from flask import Flask, render_template
-from models import *
+from models.state import State
 from models import storage
 # import sys
 
@@ -24,8 +24,9 @@ def stateslist():
     states = sorted(list(storage.all(State).values()), key=lambda x: x.name)
     return render_template("7-states_list.html", states=states)
 
+
 @hbnb.teardown_appcontext
-def close_db_session(exception):
+def close_session(exception):
     storage.close()
 
 
