@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """import libraries"""
 from flask import Flask, render_template
-from models.state import State
-from models import storage
-from models import *
-# import sys
-
-# sys.path.append('..')
-
-# from models import storage
 # from models.state import State
+# from models import storage
 # from models import *
+import sys
+
+sys.path.append('..')
+
+from models import storage
+from models.state import State
+from models import *
 
 
 hbnb = Flask(__name__)
@@ -23,7 +23,7 @@ hbnb = Flask(__name__)
 
 @hbnb.route("/states_list", strict_slashes=False)
 def stateslist():
-    states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
+    states = sorted(list(storage.all(State).values()), key=lambda x: x.name)
     return render_template("7-states_list.html", states=states)
 
 
