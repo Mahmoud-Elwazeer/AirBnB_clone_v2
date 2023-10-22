@@ -26,7 +26,7 @@ class FileStorage:
                 class_name, obj_id = key.split('.')
                 if class_name == cls.__name__:
                     obj[key] = value
-            self.__objects = obj
+            return (obj)
         return self.__objects
 
     def new(self, obj):

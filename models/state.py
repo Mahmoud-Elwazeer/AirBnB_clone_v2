@@ -21,7 +21,7 @@ class State(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    # if (models.storage_type == "db"):
+    # if (models.storage_type != "db"):
     #     @property
     #     def cities(self):
     #         """
@@ -39,9 +39,13 @@ class State(BaseModel, Base):
     if models.storage_type != "db":
         @property
         def cities(self):
-            """getter for list of city instances related to the state"""
+            """
+            Getter attribute that returns a list of City instances
+            with state_id equal to the current State.id
+            """
             city_list = []
             all_cities = models.storage.all(City)
+            # print(type(all_cities))
             for city in all_cities.values():
                 if city.state_id == self.id:
                     city_list.append(city)
