@@ -7,6 +7,7 @@ from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 import models
 
+
 class State(BaseModel, Base):
     """sub class that inherit from BaseModel
     """
